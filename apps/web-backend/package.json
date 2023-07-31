@@ -1,0 +1,17 @@
+{
+  "name": "web-backend",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "test": "jest --runInBand",
+    "build": "tsc --noEmit && node esbuild.config.js",
+    "start": "tsc --noEmit --watch & node esbuild.config watch & nodemon --watch dist dist/app.js | pino-pretty",
+    "generate-swagger": "ts-node src/swagger.ts",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "test:coverage": "jest --collectCoverage --runInBand",
+    "test:unit": "jest tests/unit --runInBand",
+    "test:unit:coverage": "jest tests/unit --collectCoverage --runInBand"
+  }
+}

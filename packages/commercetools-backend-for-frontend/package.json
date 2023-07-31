@@ -1,0 +1,41 @@
+{
+  "name": "commercetools-backend-for-frontend",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "test": "jest --runInBand",
+    "build": "tsc --noEmit && node esbuild.config.js",
+    "start": "tsc --noEmit --watch & node esbuild.config watch & nodemon --watch dist dist/app.js | pino-pretty",
+    "generate-swagger": "ts-node src/swagger.ts",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "test:coverage": "jest --collectCoverage --runInBand",
+    "test:unit": "jest tests/unit --runInBand",
+    "test:unit:coverage": "jest tests/unit --collectCoverage --runInBand"
+  },
+  "engines": {
+    "node": ">=16.10.0"
+  },
+  "dependencies": {
+    "@fastify/auth": "^4.1.0",
+    "@fastify/cors": "^8.2.0",
+    "@fastify/helmet": "^10.0.2",
+    "@fastify/type-provider-typebox": "^2.4.0",
+    "@sinclair/typebox": "^0.25.9",
+    "@types/node-fetch": "^2.6.2",
+    "env-var": "^7.3.0",
+    "fastify": "^4.9.2",
+    "fastify-plugin": "^4.3.0",
+    "global": "^4.4.0",
+    "node-fetch": "2",
+    "pino-pretty": "^9.1.1",
+    "rambda": "^8.3.0"
+  },
+  "devDependencies": {
+    "@fastify/swagger": "^8.2.0",
+    "@types/node": "^18.11.9",
+    "chokidar": "^3.5.3",
+    "typescript": "^4.8.4"
+  }
+}
